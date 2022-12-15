@@ -11,7 +11,26 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        //add the jwt token(local storage) request
+         //add the jwt token(local storage) request
+         
+        // const token = this.login.getToken();
+        // if(token != null)
+        // {
+        //         req = req.clone({
+        //             setHeaders: {
+        //                 Authorization: `Bearer ${token}`
+        //             }
+                
+        //         });
+        // }
+        // return next.handle(req);
+
+        
+
+
+         //yaha se durgesh ka code h 
+
+
         let authReq = req;
         const token = this.login.getToken();
         console.log("Inside interseptor");
@@ -42,11 +61,11 @@ export class AuthInterceptor implements HttpInterceptor {
 }
 
 
-export const AuthInterceptorProviders = [
-    {
-        provide: HTTP_INTERCEPTORS, 
-        useValue: LoginService,
-        userClass:AuthInterceptor,
-        multi:true,
-    },
-];
+// export const AuthInterceptorProviders = [
+//     {
+//         provide: HTTP_INTERCEPTORS, 
+//         useValue: LoginService,
+//         userClass:AuthInterceptor,
+//         multi:true,
+//     },
+// ];
