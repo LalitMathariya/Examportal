@@ -1,17 +1,22 @@
 package com.exam.examserver.controller;
 
+import com.exam.examserver.helper.UserFoundException;
+import com.exam.examserver.helper.UserNotFoundException;
 import com.exam.examserver.model.Role;
 import com.exam.examserver.model.User;
 import com.exam.examserver.model.UserRole;
 import com.exam.examserver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.HashSet;
 import java.util.Set;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin("*")
 public class UserController {
 
     @Autowired
@@ -21,6 +26,7 @@ public class UserController {
     @PostMapping("/")
     public User CreateUser(@RequestBody User user) throws Exception {
 
+        user.setProfile("default.png");
         Set<UserRole> roles = new HashSet<>();
 
         Role role = new Role();
@@ -46,6 +52,11 @@ public class UserController {
     public void deleteUser(@PathVariable("userId") Long userId){
         this.userService.deleteUser(userId);
 
+    }
+
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ex) {
+        return ResponseEntity.ok(ex.getMessage());
     }
 
 
