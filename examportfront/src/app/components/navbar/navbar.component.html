@@ -6,8 +6,26 @@
 </a>
     <span class="example-spacer"></span>
 
-    <a routerLink="/login" class="tdeco whitecolor">Login</a>
+    <a 
+    *ngIf="!isLoggedIn"
+    routerLink="/login" 
+    class="tdeco whitecolor">Login</a>
 
-    <a [routerLink]="'/signup'" class="ml20 mr20 tdeco whitecolor" >Register</a>
+    <a 
+    *ngIf="!isLoggedIn"
+    [routerLink]="'/signup'" 
+    class="ml20 mr20 tdeco whitecolor" >Register</a>
+
+    <a 
+    *ngIf="isLoggedIn && user"
+    class="ml20 mr20 tdeco whitecolor" >
+    {{user['username']}}
+    </a>
+
+    <a 
+    (click)="logout()"
+    [routerLink]="'/login'" 
+    *ngIf="isLoggedIn"
+    class="ml20 mr20 tdeco whitecolor" >Logout</a>
 
 </mat-toolbar>
