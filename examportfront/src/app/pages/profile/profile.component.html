@@ -1,0 +1,60 @@
+<mat-card class="mt30" 
+*ngIf="user">
+
+    
+    <mat-card-content>
+        <div class="bootstrap-wrapper"
+         >
+            <div class="container text-center">
+                <!-- <div class="container" style="background-color: #4E5180;"> -->
+                <h1>Your Profile Details</h1>
+            <!-- </div> -->
+                <div class="container text-center">
+                    <img src="https://media.istockphoto.com/id/1208175274/vector/avatar-vector-icon-simple-element-illustrationavatar-vector-icon-material-concept-vector.jpg?s=612x612&w=0&k=20&c=t4aK_TKnYaGQcPAC5Zyh46qqAtuoPcb-mjtQax3_9Xc=" alt="" class="profile-img">
+                    <h1
+                   
+                    class="mt20">{{user["firstname"]}} {{user["lastname"]}}</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <!-- table details -->
+                        <table class="table text-center ">
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user["username"]}}</td>
+                            </tr>
+                            <tr>
+                                <td>UserId</td>
+                                <td>Exam{{user["id"]}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user["phone"]}}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>Email</td>
+                                <td>{{user['email']}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{auth}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user['enabled'] ? "Active" : "Inactive"}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>  
+            </div> 
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions style="margin:auto; " class="mt20">
+        <button class="ml20" mat-raised-button color="primary">Update</button>
+        <button class="ml10" mat-raised-button color="accent">Share</button>
+    </mat-card-actions>
+
+</mat-card>

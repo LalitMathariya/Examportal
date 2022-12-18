@@ -10,7 +10,8 @@ export class NavbarComponent {
  
   isLoggedIn= false;
   user=null;
- 
+
+  
   
 
 constructor(public login:LoginService){}

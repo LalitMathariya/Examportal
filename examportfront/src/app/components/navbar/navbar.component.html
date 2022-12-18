@@ -16,16 +16,17 @@
     [routerLink]="'/signup'" 
     class="ml20 mr20 tdeco whitecolor" >Register</a>
 
-    <a 
+    <button mat-button color="white"
     *ngIf="isLoggedIn && user"
-    class="ml20 mr20 tdeco whitecolor" >
-    {{user['username']}}
-    </a>
+    class="ml20 mr10 tdeco whitecolor" routerLink="/admin/profile">
 
-    <a 
+    {{user['username']}}
+</button>
+
+    <button mat-button color="white"
     (click)="logout()"
     [routerLink]="'/login'" 
     *ngIf="isLoggedIn"
-    class="ml20 mr20 tdeco whitecolor" >Logout</a>
+    class="ml10 mr20 tdeco whitecolor">Logout</button>
 
 </mat-toolbar>
