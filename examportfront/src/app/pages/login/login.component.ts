@@ -43,7 +43,7 @@ constructor(private snack:MatSnackBar, private login:LoginService,private router
         this.login.generateToken(this.loginData).subscribe(
           (data:any)=>{
             console.log('success');
-            console.log(data);
+            // console.log(data);
 
             //login...
              this.login.loginUser(data.token)
@@ -51,7 +51,7 @@ constructor(private snack:MatSnackBar, private login:LoginService,private router
              this.login.getCurrentUser().subscribe(
               (user:any) => {
                 this.login.setUser(user);
-                console.log(user);
+                // console.log(user);
                 //redirect ...Admin:admin-dashboard
                 //redirect .. Normal:normal-dashboard
                 if(this.login.getUserRole()=="ADMIN"){

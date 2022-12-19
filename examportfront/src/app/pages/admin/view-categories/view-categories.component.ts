@@ -23,7 +23,7 @@ export class ViewCategoriesComponent {
 ngOnInit():void{
   this.category.categories().subscribe((data:any)=>{
     this.categories=data;
-    console.log(this.categories);
+    //console.log(this.categories);
   },
   (error)=>{
     console.log(error);

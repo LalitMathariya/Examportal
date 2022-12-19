@@ -29,7 +29,7 @@ export class ViewQuizzesComponent {
 
     this._quiz.quizzes().subscribe((data:any)=>{
       this.quizzes=data;
-      console.log(this.quizzes);
+      //console.log(this.quizzes);
     },
     (error)=>{
       console.log(error);

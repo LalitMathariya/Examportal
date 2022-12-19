@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
         let authReq = req;
         const token = this.login.getToken();
-        console.log("Inside interseptor");
+        // console.log("Inside interseptor");
         if(token != null)
         {
             authReq = authReq.clone({
