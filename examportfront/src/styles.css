@@ -25,6 +25,12 @@ body {
 .mt20{
     margin-top: 20px!important;
 }
+.mt10{
+    margin-top: 10px!important;
+}
+.mt40{
+    margin-top: 40px!important;
+}
 
 .mb20{
     margin-bottom: 20px!important;
@@ -46,6 +52,9 @@ body {
 }
 .pad20{
     padding: 20px;
+}
+.pad10{
+    padding: 10px;
 }
 
 .mt30{

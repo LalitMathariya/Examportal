@@ -26,6 +26,12 @@ import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import {MatTableModule} from '@angular/material/table';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -41,7 +47,11 @@ import {MatTableModule} from '@angular/material/table';
     UserDashboardComponent,
     ProfileComponent,
     SidebarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoryComponent,
+    ViewQuizzesComponent,
+    AddQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +67,9 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule
    
   ],
   providers: [

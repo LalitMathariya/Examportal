@@ -1,0 +1,71 @@
+<mat-card class="mt30 pad20">
+    <h1>Add New Quiz</h1>
+    <div class="row">
+        <div class="col-md-12 ">
+            <form>
+                <div class="row">
+                <!-- title field -->
+                <div class="col-md-9">
+                <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Enter Title</mat-label>
+                    <input type="text" name='title' placeholder="Enter here" matInput>
+                </mat-form-field>
+            </div>
+
+            <!-- //category select -->
+            <div class="col-md-3">
+            <mat-form-field class="w100" appearance="outline">
+                <mat-label>Category</mat-label>
+                <mat-select name="category">
+                  <mat-option *ngFor="let c of categories" [value]="c.cid">
+                    {{c.title}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+        </div>
+
+                <!-- Max-marks && number of question to be displayed -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- //max-marks -->
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Max Marks</mat-label>
+                            <input type="number" name='maxMarks' placeholder="Enter here" matInput>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- //number of questions to be displayed -->
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Questions Displayed</mat-label>
+                            <input type="number" name='numberOfQuestions' placeholder="Enter here" matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <!-- descriptionFielsd -->
+                <mat-form-field class="w100">
+                    <mat-label>Enter Description</mat-label>
+                    <textarea type="text" rows="5" name='description' placeholder="Enter here" matInput></textarea>
+                </mat-form-field>
+
+            <!-- //active field -->
+                <section class="example-section mb20">
+                    <mat-slide-toggle class="example-margin" color="primary" [checked]="false">
+                        Publish Status
+                    </mat-slide-toggle>
+                </section>
+
+            
+                <div class="container text-center">
+                    <button mat-raised-button type="submit" color="primary">Add</button>
+                </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</mat-card>
