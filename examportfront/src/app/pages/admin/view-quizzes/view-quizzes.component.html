@@ -1,5 +1,5 @@
 <div class="bootstrap-wrapper mt30">
-
+<!-- {{quizzes | json}} -->
     <mat-card class="pad10">
         <h1 style="margin-left:20px; margin-top: 10px;">All Quizzes</h1>
 
@@ -26,6 +26,8 @@
                 <button mat-stroked-button color="primary" class="ml20">Questions Displayed: {{q.numberOfQuestions}}</button>
 
                 <button mat-stroked-button color="primary" class="ml20">Total Attempts: </button>
+
+                <button mat-flat-button color="warn" class="ml20" (click)="deleteQuiz(q.qid)">Delete </button>
 
                 
 

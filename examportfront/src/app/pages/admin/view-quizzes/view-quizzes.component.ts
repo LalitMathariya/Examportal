@@ -11,7 +11,7 @@ export class ViewQuizzesComponent {
 
   quizzes=[
     {
-      qId:23,
+      qid:23,
       title:'test',
       description:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, debitis eligendi cumque unde possimus, rerum aspernatur quidem quam nemo dolorum ipsa hic similique earum tempora voluptate atque natus non quod.',
       maxMarks:'0',
@@ -37,5 +37,39 @@ export class ViewQuizzesComponent {
 
     });
 
+  }
+  //delete the quiz
+  deleteQuiz(qid: any){
+    
+    //alert(qId);
+    // this._quiz.deleteQuiz(qid).subscribe((data:any)=>{
+    //   this.quizzes = this.quizzes.filter((quiz)=> quiz.qid != qid);
+    //   Swal.fire('Success','Quiz deleted','success');
+    // },
+    // (error)=>{
+    //   console.log(error);
+    //   Swal.fire('Error',"Error in deleting quiz !",'error');
+
+    // });
+
+    Swal.fire({
+      icon:'info',
+      title:" Are you sure ? ",
+      confirmButtonText:'Delete',
+      showCancelButton:true,
+    }).then((result)=>{
+      if(result.isConfirmed){
+        //delete
+        this._quiz.deleteQuiz(qid).subscribe((data:any)=>{
+          this.quizzes = this.quizzes.filter((quiz)=> quiz.qid != qid);
+          Swal.fire('Success','Quiz deleted','success');
+        },
+        (error)=>{
+          console.log(error);
+          Swal.fire('Error',"Error in deleting quiz !",'error');
+    
+        });
+      }
+    });
   }
 }
