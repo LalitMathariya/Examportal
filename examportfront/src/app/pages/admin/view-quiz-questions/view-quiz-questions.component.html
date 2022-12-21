@@ -5,9 +5,8 @@
         <div class="col-md-12">
 
             <div class="container text-center">
-                <button
-                [routerLink]="'/admin/add-question/'+ qId+'/'+qTitle"
-                mat-raised-button color="primary">Add Question</button>
+                <button [routerLink]="'/admin/add-question/'+ qId+'/'+qTitle" mat-raised-button color="primary">Add
+                    Question</button>
             </div>
 
             <mat-card *ngFor="let q of questions; let i = index" class="mt20">
@@ -49,6 +48,10 @@
 
                     </div>
 
+                    <mat-card-actions>
+                        <button mat-stroked-button color="warn" (click)="deleteQuestion(q.quesId)">Delete</button>
+                        <button class="ml20" color="primary" mat-stroked-button>Update</button>
+                    </mat-card-actions>
 
                 </mat-card-content>
 
