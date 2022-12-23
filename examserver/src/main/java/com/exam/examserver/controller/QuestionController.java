@@ -44,7 +44,7 @@ public class QuestionController {
 //        Set<Question> questionsOfQuiz =this.service.getQuestionsOfQuiz(quiz);
 //        return ResponseEntity.ok(questionsOfQuiz);
         Quiz quiz = this.quizService.getQuiz(qid);
-        Set<Question> questions =  quiz.getQuestions();
+        Set <Question> questions =  quiz.getQuestions();
         List list = new ArrayList<>(questions);
         if(list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
             list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));

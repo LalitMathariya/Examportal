@@ -20,7 +20,7 @@ export class LoginComponent  {
 constructor(private snack:MatSnackBar, private login:LoginService,private router:Router){}
 
   formSubmit(){
-    console.log("Login button clicked");
+    // console.log("Login button clicked");
 
         if(this.loginData.username.trim()=='' || this.loginData.username==null)
         {
@@ -42,7 +42,7 @@ constructor(private snack:MatSnackBar, private login:LoginService,private router
         //request server to generate token
         this.login.generateToken(this.loginData).subscribe(
           (data:any)=>{
-            console.log('success');
+            // console.log('success');
             // console.log(data);
 
             //login...

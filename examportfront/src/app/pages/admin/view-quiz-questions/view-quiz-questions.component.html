@@ -33,11 +33,11 @@
                         <div class="row">
 
                             <div class="col-md-6">
-                                <p><b>3)</b> {{ q.option3}}</p>
+                                <p *ngIf="q.option3"><b>3)</b> {{ q.option3}}</p>
                             </div>
 
                             <div class="col-md-6">
-                                <p><b>4)</b> {{ q.option4}}</p>
+                                <p *ngIf="q.option3"><b>4)</b> {{ q.option4}}</p>
                             </div>
 
                         </div>

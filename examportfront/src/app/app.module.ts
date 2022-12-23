@@ -36,57 +36,67 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { SidebarComponent as UserSidebar } from "./pages/user/sidebar/sidebar.component";
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    FooterComponent,
-    SignupComponent,
-    LoginComponent,
-    HomeComponent,
-    DashboardComponent,
-    UserDashboardComponent,
-    ProfileComponent,
-    SidebarComponent,
-    WelcomeComponent,
-    ViewCategoriesComponent,
-    AddCategoryComponent,
-    ViewQuizzesComponent,
-    AddQuizComponent,
-    UpdateQuizComponent,
-    ViewQuizQuestionsComponent,
-    AddQuestionComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    FormsModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatListModule,
-    MatTableModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    CKEditorModule,
-   
-  ],
-  providers: [
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:AuthInterceptor,
-      multi:true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        FooterComponent,
+        SignupComponent,
+        LoginComponent,
+        HomeComponent,
+        DashboardComponent,
+        UserDashboardComponent,
+        ProfileComponent,
+        SidebarComponent,
+        WelcomeComponent,
+        ViewCategoriesComponent,
+        AddCategoryComponent,
+        ViewQuizzesComponent,
+        AddQuizComponent,
+        UpdateQuizComponent,
+        ViewQuizQuestionsComponent,
+        AddQuestionComponent,
+        UserSidebar,
+        LoadQuizComponent,
+        InstructionsComponent,
+        StartComponent,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        FormsModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatListModule,
+        MatTableModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        CKEditorModule,
+        MatProgressSpinnerModule,
+        
+    ]
 })
 export class AppModule { }

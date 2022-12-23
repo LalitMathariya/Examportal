@@ -1,10 +1,13 @@
 package com.exam.examserver.controller;
 
+import com.exam.examserver.model.exam.Category;
 import com.exam.examserver.model.exam.Quiz;
 import com.exam.examserver.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -42,6 +45,28 @@ public class QuizController {
     @DeleteMapping("/{qid}")
     public  void delete(@PathVariable("qid") Long qid){
         this.quizService.deleteQuiz(qid);
+    }
+
+    @GetMapping("/category/{cid}")
+    public List<Quiz> getQuizzesOfCategory(@PathVariable("cid") Long cid)
+    {
+        Category category = new Category();
+        category.setCid(cid);
+        return this.quizService.getQuizzesOfCategory(category);
+    }
+
+    //get active quizzes
+    @GetMapping("/active")
+    public List<Quiz> getActiveQuizzes(){
+        return this.quizService.getActiveQuizzes();
+    }
+
+    //get active quizzes of category
+    @GetMapping("/category/active/{cid}")
+    public List<Quiz> getActiveQuizzesOfCategory(@PathVariable("cid") Long cid){
+        Category category = new Category();
+        category.setCid(cid);
+        return this.quizService.getActiveQuizzesOfCategory(category);
     }
 
 

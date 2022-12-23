@@ -9,9 +9,15 @@ export class QuestionService {
 
   constructor(private _http:HttpClient) { }
 
-  //getting all the quiz
+  //getting all the question of quiz
   public getQuestionsOfQuiz(qid:any){
     return this._http.get(`${baseUrl}/question/quiz/all/${qid}`);
+  }
+
+  
+  //getting allowed questions of quiz
+  public getQuestionsOfQuizForTest(qid:any){
+    return this._http.get(`${baseUrl}/question/quiz/${qid}`);
   }
 
   //add question in the quiz

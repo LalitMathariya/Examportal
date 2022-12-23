@@ -1,5 +1,6 @@
 package com.exam.examserver.services.impl;
 
+import com.exam.examserver.model.exam.Category;
 import com.exam.examserver.model.exam.Quiz;
 import com.exam.examserver.repo.QuizRepository;
 import com.exam.examserver.services.QuizService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -41,4 +43,23 @@ public class QuizServiceImpl implements QuizService {
 //        quiz.setQid(quizId);
         this.quizRepository.deleteById(quizId);
     }
+
+    @Override
+    public List<Quiz> getQuizzesOfCategory(Category category) {
+        return this.quizRepository.findBycategory(category);
+    }
+
+    //getActive Quizzes
+    @Override
+    public List<Quiz> getActiveQuizzes() {
+        return this.quizRepository.findByActive(true);
+    }
+
+    @Override
+    public List<Quiz> getActiveQuizzesOfCategory(Category c) {
+        return this.quizRepository.findByCategoryAndActive(c, true);
+    }
+
+
+
 }
