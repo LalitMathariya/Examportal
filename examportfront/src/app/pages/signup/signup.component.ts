@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit{
   ngOnInit(): void {}
 
   formSubmit(){
-   console.log(this.user);
+  //  console.log(this.user);
    if(this.user.username=='' || this.user.username==null){
    // alert("Username is required !!");
    this.snack.open("Username is required !!",'Okay!',{

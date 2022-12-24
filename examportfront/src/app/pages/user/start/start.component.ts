@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 export class StartComponent {
 
   qid: any;
-  questions:any;
+  questions: any;
 
-  marksGot =0;
-  correctAnswers =0;
+  marksGot = 0;
+  correctAnswers = 0;
   attempted = 0;
-  isSubmit=false;
+  isSubmit = false;
   timer: any;
 
 
@@ -28,17 +28,19 @@ export class StartComponent {
     this.qid = this.route.snapshot.params['qid'];
     // alert(this.qid);
     this.loadQuestions();
-    
+
   }
 
   loadQuestions() {
     this._question.getQuestionsOfQuizForTest(this.qid).subscribe((data: any) => {
-      // console.log(data);
-      this.questions=data;
-      this.timer= this.questions.length*2*60;
-      this.questions.forEach((q:any)=>{
-        q['givenAnswer'] ='';
-      });
+      //  console.log(data);
+      this.questions = data;
+      this.timer = this.questions.length * 2 * 60;
+
+      //ab ye field ki jarurat nhi h kyuki backend me field declare krdi h already
+      // this.questions.forEach((q: any) => {
+      //   q['givenAnswer'] = '';
+      // });
       this.startTimer();
     },
       (error) => {
@@ -55,8 +57,7 @@ export class StartComponent {
     })
   }
 
-  submitQuiz()
-  {
+  submitQuiz() {
     Swal.fire({
       title: 'Do you want to Submit the Quiz?',
       text: "You won't be able to revert this!",
@@ -69,44 +70,67 @@ export class StartComponent {
       if (e.isConfirmed) {
         this.evalQuiz();
         //calculation
-       
+
       }
     })
 
   }
 
 
-  startTimer(){
-   let t = window.setInterval(()=>{
+  startTimer() {
+    let t = window.setInterval(() => {
       //code
-      if(this.timer <= 0){
+      if (this.timer <= 0) {
         this.evalQuiz()
         clearInterval(t)
-      }else{
+      } else {
         this.timer--;
       }
-    },1000)
+    }, 1000)
   }
 
-  getFormattedTime(){
-    let hh= Math.floor(this.timer/60/60);
-    let mm = Math.floor(this.timer/60);
-    let ss = this.timer-mm*60;
+  getFormattedTime() {
+    let hh = Math.floor(this.timer / 60 / 60);
+    let mm = Math.floor(this.timer / 60);
+    let ss = this.timer - mm * 60;
     return `${hh} H : ${mm} M : ${ss} S`;
   }
 
-  evalQuiz(){
-    this.isSubmit=true;
-    this.questions.forEach((q: any)=>{
-      if(q.givenAnswer==q.answer){
-        this.correctAnswers++;
-        let marksSingle = this.questions[0].quiz.maxMarks/this.questions.length;
-        this.marksGot+=marksSingle;
-      }
-      if(q.givenAnswer.trim()!=''){
-        this.attempted++;
-      }
-      
-    });
+  evalQuiz() {
+
+    //call to server to evaluate quiz
+    this._question.evalQuiz(this.questions).subscribe(
+      (data:any) => {
+        // console.log(data);
+        this.marksGot=data.marksGot;
+        this.correctAnswers=data.correctAnswers;
+        this.attempted=data.attempted;
+        this.isSubmit=true;
+
+      },
+      (error) => {
+        console.log(error);
+      });
+
+
+
+    //client side evaluation of quiz
+    //   this.isSubmit=true;
+    //   this.questions.forEach((q: any)=>{
+    //     if(q.givenAnswer==q.answer){
+    //       this.correctAnswers++;
+    //       let marksSingle = this.questions[0].quiz.maxMarks/this.questions.length;
+    //       this.marksGot+=marksSingle;
+    //     }
+    //     if(q.givenAnswer.trim()!=''){
+    //       this.attempted++;
+    //     }
+
+    //   });
+    // }
+  }
+
+  printPage(){
+    window.print();
   }
 }
